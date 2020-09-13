@@ -1,0 +1,16 @@
+C:\Users\Ignacio\source\repos\ProductoApp\ProductoApp\obj\Debug\winforms.csprojAssemblyReference.cache
+C:\Users\Ignacio\source\repos\ProductoApp\ProductoApp\obj\Debug\ProductoApp.Properties.Resources.resources
+C:\Users\Ignacio\source\repos\ProductoApp\ProductoApp\obj\Debug\winforms.csproj.GenerateResource.cache
+C:\Users\Ignacio\source\repos\ProductoApp\ProductoApp\obj\Debug\winforms.csproj.CoreCompileInputs.cache
+C:\Users\Ignacio\source\repos\ProductoApp\ProductoApp\bin\Debug\ProductoApp.exe.config
+C:\Users\Ignacio\source\repos\ProductoApp\ProductoApp\bin\Debug\ProductoApp.exe
+C:\Users\Ignacio\source\repos\ProductoApp\ProductoApp\bin\Debug\ProductoApp.pdb
+C:\Users\Ignacio\source\repos\ProductoApp\ProductoApp\bin\Debug\Comercio.dll
+C:\Users\Ignacio\source\repos\ProductoApp\ProductoApp\bin\Debug\Dominio.dll
+C:\Users\Ignacio\source\repos\ProductoApp\ProductoApp\bin\Debug\Comercio.pdb
+C:\Users\Ignacio\source\repos\ProductoApp\ProductoApp\bin\Debug\Dominio.pdb
+C:\Users\Ignacio\source\repos\ProductoApp\ProductoApp\obj\Debug\winforms.csproj.CopyComplete
+C:\Users\Ignacio\source\repos\ProductoApp\ProductoApp\obj\Debug\ProductoApp.exe
+C:\Users\Ignacio\source\repos\ProductoApp\ProductoApp\obj\Debug\ProductoApp.pdb
+C:\Users\Ignacio\source\repos\ProductoApp\ProductoApp\obj\Debug\ProductoApp.formArticulos.resources
+C:\Users\Ignacio\source\repos\ProductoApp\ProductoApp\obj\Debug\ProductoApp.formCargar.resources

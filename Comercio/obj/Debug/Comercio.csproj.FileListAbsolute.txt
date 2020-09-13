@@ -1,0 +1,9 @@
+C:\Users\Ignacio\source\repos\ProductoApp\Comercio\obj\Debug\Comercio.csprojAssemblyReference.cache
+C:\Users\Ignacio\source\repos\ProductoApp\Comercio\obj\Debug\Comercio.csproj.CoreCompileInputs.cache
+C:\Users\Ignacio\source\repos\ProductoApp\Comercio\bin\Debug\Comercio.dll
+C:\Users\Ignacio\source\repos\ProductoApp\Comercio\bin\Debug\Comercio.pdb
+C:\Users\Ignacio\source\repos\ProductoApp\Comercio\bin\Debug\Dominio.dll
+C:\Users\Ignacio\source\repos\ProductoApp\Comercio\bin\Debug\Dominio.pdb
+C:\Users\Ignacio\source\repos\ProductoApp\Comercio\obj\Debug\Comercio.csproj.CopyComplete
+C:\Users\Ignacio\source\repos\ProductoApp\Comercio\obj\Debug\Comercio.dll
+C:\Users\Ignacio\source\repos\ProductoApp\Comercio\obj\Debug\Comercio.pdb
