@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Comercio;
+using Dominio;
 
 namespace ProductoApp
 {
@@ -28,6 +29,7 @@ namespace ProductoApp
         {
             ArticuloComercio comercio = new ArticuloComercio();
             dgvLista.DataSource = comercio.Listar();
+            dgvLista.Columns[6].Visible = false;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -41,5 +43,19 @@ namespace ProductoApp
             new formCargar().ShowDialog();
         }
 
+        private void dgvLista_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Articulo art = (Articulo)dgvLista.CurrentRow.DataBoundItem;
+                pbArticulo.Load(art.UrlImagen);
+            }
+            catch (Exception)
+            {
+
+                
+            }
+            
+        }
     }
 }

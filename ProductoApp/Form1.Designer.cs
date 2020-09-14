@@ -36,7 +36,9 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.lblListado = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.pbArticulo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvLista
@@ -49,6 +51,7 @@
             this.dgvLista.Name = "dgvLista";
             this.dgvLista.Size = new System.Drawing.Size(476, 173);
             this.dgvLista.TabIndex = 0;
+            this.dgvLista.SelectionChanged += new System.EventHandler(this.dgvLista_SelectionChanged);
             // 
             // lblTitulo
             // 
@@ -129,11 +132,21 @@
             this.label3.Size = new System.Drawing.Size(0, 13);
             this.label3.TabIndex = 9;
             // 
+            // pbArticulo
+            // 
+            this.pbArticulo.Location = new System.Drawing.Point(523, 87);
+            this.pbArticulo.Name = "pbArticulo";
+            this.pbArticulo.Size = new System.Drawing.Size(184, 173);
+            this.pbArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbArticulo.TabIndex = 10;
+            this.pbArticulo.TabStop = false;
+            // 
             // formArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(729, 353);
+            this.Controls.Add(this.pbArticulo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lblListado);
@@ -148,6 +161,7 @@
             this.Text = "Artículos";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,6 +177,7 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label lblListado;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pbArticulo;
     }
 }
 

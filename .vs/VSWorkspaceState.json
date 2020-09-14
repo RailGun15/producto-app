@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Comercio",
+    "\\Dominio",
+    "\\ProductoApp"
   ],
+  "SelectedNode": "\\ProductoApp\\winforms.csproj",
   "PreviewInSolutionExplorer": false
 }
