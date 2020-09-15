@@ -16,3 +16,12 @@ C:\Users\Asdmin\Documents\GitHub\producto-app\Comercio\obj\Debug\Comercio.csproj
 C:\Users\Asdmin\Documents\GitHub\producto-app\Comercio\obj\Debug\Comercio.csproj.CopyComplete
 C:\Users\Asdmin\Documents\GitHub\producto-app\Comercio\obj\Debug\Comercio.dll
 C:\Users\Asdmin\Documents\GitHub\producto-app\Comercio\obj\Debug\Comercio.pdb
+C:\Users\Ignacio\source\repos\producto-app\Comercio\bin\Debug\Comercio.dll
+C:\Users\Ignacio\source\repos\producto-app\Comercio\bin\Debug\Comercio.pdb
+C:\Users\Ignacio\source\repos\producto-app\Comercio\bin\Debug\Dominio.dll
+C:\Users\Ignacio\source\repos\producto-app\Comercio\bin\Debug\Dominio.pdb
+C:\Users\Ignacio\source\repos\producto-app\Comercio\obj\Debug\Comercio.csprojAssemblyReference.cache
+C:\Users\Ignacio\source\repos\producto-app\Comercio\obj\Debug\Comercio.csproj.CoreCompileInputs.cache
+C:\Users\Ignacio\source\repos\producto-app\Comercio\obj\Debug\Comercio.csproj.CopyComplete
+C:\Users\Ignacio\source\repos\producto-app\Comercio\obj\Debug\Comercio.dll
+C:\Users\Ignacio\source\repos\producto-app\Comercio\obj\Debug\Comercio.pdb
