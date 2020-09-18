@@ -100,5 +100,10 @@ namespace ProductoApp
             if (e.KeyChar == '.' && (this.Text.IndexOf('.') > 0 || this.Text.Length == 0))
                 e.Handled = true;
         }
+
+        private void formCargar_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

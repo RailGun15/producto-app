@@ -221,6 +221,7 @@
             this.MinimumSize = new System.Drawing.Size(538, 351);
             this.Name = "formCargar";
             this.Text = "Cargar";
+            this.Load += new System.EventHandler(this.formCargar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.error1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

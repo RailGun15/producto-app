@@ -85,5 +85,11 @@ namespace ProductoApp
             }
         }
 
+        private void btnEditar_Click_1(object sender, EventArgs e)
+        {
+            fmrEditar editar = new fmrEditar();
+            editar.ShowDialog();
+            Cargar();
+        }
     }
 }

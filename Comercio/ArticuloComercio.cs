@@ -18,7 +18,7 @@ namespace Comercio
             SqlDataReader reader;
             List<Articulo> artList = new List<Articulo>();
 
-            connection.ConnectionString = "data source = .\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
+            connection.ConnectionString = "data source = .; initial catalog=CATALOGO_DB; integrated security=sspi";
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = "SELECT A.Id,A.Codigo,A.Nombre,ISNULL(A.Descripcion,''),ISNULL(M.Descripcion,'') AS Marca,ISNULL(C.Descripcion,'') AS Categoria,ISNULL(A.ImagenUrl,''),A.Precio FROM ARTICULOS A LEFT JOIN MARCAS M ON M.Id = A.IdMarca LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria;";
             command.Connection = connection;
@@ -52,6 +52,30 @@ namespace Comercio
 
         }
 
+        public void editar(Articulo editado)
+        {
+            SqlConnection connection = new SqlConnection();
+            SqlCommand command = new SqlCommand();
+
+            connection.ConnectionString = "data source = .; initial catalog=CATALOGO_DB; integrated security=sspi";
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = "update ARTICULOS set Codigo='@codigo',Nombre='@nombre',Descripcion=NULLIF('@descripcion',''),IdMarca=@marca,IdCategoria=@categoria,ImagenUrl=NULLIF('@imagen',''),Precio=@precio where id = @id;";
+            command.Parameters.AddWithValue("@id", editado.Id);
+            command.Parameters.AddWithValue("@codigo", editado.CodArticulo);
+            command.Parameters.AddWithValue("@nombre", editado.Nombre);
+            command.Parameters.AddWithValue("@descripcion", editado.Descripcion);
+            command.Parameters.AddWithValue("@marca", editado.Marca.Id);
+            command.Parameters.AddWithValue("@categoria", editado.Categoria.Id);
+            command.Parameters.AddWithValue("@imagen", editado.UrlImagen);
+            command.Parameters.AddWithValue("@precio", editado.Precio);
+            command.Connection = connection;
+
+            connection.Open();
+            command.ExecuteNonQuery();
+
+            connection.Close();
+        }
+
         public void Eliminar(int id)
         {
             SqlConnection connection = new SqlConnection();
@@ -75,7 +99,7 @@ namespace Comercio
             SqlConnection connection = new SqlConnection();
             SqlCommand command = new SqlCommand();
 
-            connection.ConnectionString = "data source = .\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
+            connection.ConnectionString = "data source = .; initial catalog=CATALOGO_DB; integrated security=sspi";
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = "INSERT INTO ARTICULOS (Codigo,Nombre,Descripcion,IdMarca,IdCategoria,ImagenUrl,Precio) VALUES (@codigo,@nombre,NULLIF(@descripcion,''),@marca,@categoria,NULLIF(@imagen,''),@precio);";
             command.Parameters.AddWithValue("@codigo", art.CodArticulo);
@@ -93,9 +117,6 @@ namespace Comercio
             connection.Close();
         }
 
-        public static void Editar(Articulo art)
-        {
-
-        }
+       
     }
 }

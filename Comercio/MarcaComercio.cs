@@ -18,7 +18,7 @@ namespace Comercio
             SqlCommand command = new SqlCommand();
             SqlDataReader reader;
 
-            connection.ConnectionString = "data source = DESKTOP-0E8A9MS\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
+            connection.ConnectionString = "data source = .; initial catalog=CATALOGO_DB; integrated security=sspi";
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = "SELECT * FROM MARCAS;";
             command.Connection = connection;
