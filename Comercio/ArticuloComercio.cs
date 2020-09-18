@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -42,13 +43,12 @@ namespace Comercio
                 aux.Precio = reader.GetDecimal(7);
 
                 artList.Add(aux);
-
-
             }
 
             connection.Close();
 
             return artList;
+
 
         }
 
@@ -91,6 +91,128 @@ namespace Comercio
             command.ExecuteNonQuery();
 
             connection.Close();
+        }
+
+        public List<Articulo> BuscarMarca(Marca m)
+        {
+            SqlConnection connection = new SqlConnection();
+            SqlCommand command = new SqlCommand();
+            SqlDataReader reader;
+            List<Articulo> artList = new List<Articulo>();
+
+            connection.ConnectionString = "data source = .\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = "SELECT A.Id,A.Codigo,A.Nombre,ISNULL(A.Descripcion,''),ISNULL(M.Descripcion,'') AS Marca,ISNULL(C.Descripcion,'') AS Categoria,ISNULL(A.ImagenUrl,''),A.Precio FROM ARTICULOS A LEFT JOIN MARCAS M ON M.Id = A.IdMarca LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria WHERE IdMarca = @marca;";
+            command.Parameters.AddWithValue("@marca", m.Id);
+
+            command.Connection = connection;
+
+            connection.Open();
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Articulo aux = new Articulo();
+                aux.Id = (int)reader["Id"];
+                aux.CodArticulo = reader.GetString(1);
+                aux.Nombre = reader.GetString(2);
+                aux.Descripcion = reader.GetString(3);
+                aux.UrlImagen = reader.GetString(6);
+
+                aux.Marca = new Marca();
+                aux.Marca.Nombre = reader.GetString(4);
+                aux.Categoria = new Categoria();
+                aux.Categoria.Nombre = reader.GetString(5);
+                aux.UrlImagen = reader.GetString(6);
+                aux.Precio = reader.GetDecimal(7);
+
+                artList.Add(aux);
+            }
+
+            connection.Close();
+
+            return artList;
+        }
+
+        public List<Articulo> BuscarCategoria(Categoria c)
+        {
+            SqlConnection connection = new SqlConnection();
+            SqlCommand command = new SqlCommand();
+            SqlDataReader reader;
+            List<Articulo> artList = new List<Articulo>();
+
+            connection.ConnectionString = "data source = .\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = "SELECT A.Id,A.Codigo,A.Nombre,ISNULL(A.Descripcion,''),ISNULL(M.Descripcion,'') AS Marca,ISNULL(C.Descripcion,'') AS Categoria,ISNULL(A.ImagenUrl,''),A.Precio FROM ARTICULOS A LEFT JOIN MARCAS M ON M.Id = A.IdMarca LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria WHERE IdCategoria = @categoria;";
+            command.Parameters.AddWithValue("@categoria", c.Id);
+
+            command.Connection = connection;
+
+            connection.Open();
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Articulo aux = new Articulo();
+                aux.Id = (int)reader["Id"];
+                aux.CodArticulo = reader.GetString(1);
+                aux.Nombre = reader.GetString(2);
+                aux.Descripcion = reader.GetString(3);
+                aux.UrlImagen = reader.GetString(6);
+
+                aux.Marca = new Marca();
+                aux.Marca.Nombre = reader.GetString(4);
+                aux.Categoria = new Categoria();
+                aux.Categoria.Nombre = reader.GetString(5);
+                aux.UrlImagen = reader.GetString(6);
+                aux.Precio = reader.GetDecimal(7);
+
+                artList.Add(aux);
+
+            }
+
+            connection.Close();
+
+            return artList;
+        }
+
+        public List<Articulo> BuscarMarcaCategoria(Marca m, Categoria c)
+        {
+            SqlConnection connection = new SqlConnection();
+            SqlCommand command = new SqlCommand();
+            SqlDataReader reader;
+            List<Articulo> artList = new List<Articulo>();
+
+            connection.ConnectionString = "data source = .\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = "SELECT A.Id,A.Codigo,A.Nombre,ISNULL(A.Descripcion,''),ISNULL(M.Descripcion,'') AS Marca,ISNULL(C.Descripcion,'') AS Categoria,ISNULL(A.ImagenUrl,''),A.Precio FROM ARTICULOS A LEFT JOIN MARCAS M ON M.Id = A.IdMarca LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria WHERE IdMarca = @marca AND IdCategoria = @categoria;";
+            command.Parameters.AddWithValue("@marca", m.Id);
+            command.Parameters.AddWithValue("@categoria", c.Id);
+
+            command.Connection = connection;
+
+            connection.Open();
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Articulo aux = new Articulo();
+                aux.Id = (int)reader["Id"];
+                aux.CodArticulo = reader.GetString(1);
+                aux.Nombre = reader.GetString(2);
+                aux.Descripcion = reader.GetString(3);
+                aux.UrlImagen = reader.GetString(6);
+
+                aux.Marca = new Marca();
+                aux.Marca.Nombre = reader.GetString(4);
+                aux.Categoria = new Categoria();
+                aux.Categoria.Nombre = reader.GetString(5);
+                aux.UrlImagen = reader.GetString(6);
+                aux.Precio = reader.GetDecimal(7);
+
+                artList.Add(aux);
+            }
+
+            connection.Close();
+
+            return artList;
         }
 
         public static void Editar(Articulo art)

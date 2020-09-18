@@ -34,15 +34,23 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCargar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.lblListado = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pbArticulo = new System.Windows.Forms.PictureBox();
+            this.filterMarca = new System.Windows.Forms.ComboBox();
+            this.filterCategoria = new System.Windows.Forms.ComboBox();
+            this.filterNombre = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblFilterCategoria = new System.Windows.Forms.Label();
+            this.lblfilterNombre = new System.Windows.Forms.Label();
+            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvLista
             // 
+            this.dgvLista.AllowUserToAddRows = false;
+            this.dgvLista.AllowUserToDeleteRows = false;
             this.dgvLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -57,7 +65,7 @@
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(199, 20);
+            this.lblTitulo.Location = new System.Drawing.Point(199, 9);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(303, 29);
             this.lblTitulo.TabIndex = 1;
@@ -116,15 +124,6 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // lblListado
-            // 
-            this.lblListado.AutoSize = true;
-            this.lblListado.Location = new System.Drawing.Point(23, 71);
-            this.lblListado.Name = "lblListado";
-            this.lblListado.Size = new System.Drawing.Size(99, 13);
-            this.lblListado.TabIndex = 5;
-            this.lblListado.Text = "Listado de Articulos";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -142,15 +141,86 @@
             this.pbArticulo.TabIndex = 10;
             this.pbArticulo.TabStop = false;
             // 
+            // filterMarca
+            // 
+            this.filterMarca.FormattingEnabled = true;
+            this.filterMarca.Location = new System.Drawing.Point(74, 52);
+            this.filterMarca.Name = "filterMarca";
+            this.filterMarca.Size = new System.Drawing.Size(113, 21);
+            this.filterMarca.TabIndex = 18;
+            this.filterMarca.SelectionChangeCommitted += new System.EventHandler(this.filterMarca_TextChanged);
+            this.filterMarca.Click += new System.EventHandler(this.filterMarca_Click);
+            // 
+            // filterCategoria
+            // 
+            this.filterCategoria.FormattingEnabled = true;
+            this.filterCategoria.Location = new System.Drawing.Point(270, 51);
+            this.filterCategoria.Name = "filterCategoria";
+            this.filterCategoria.Size = new System.Drawing.Size(106, 21);
+            this.filterCategoria.TabIndex = 19;
+            this.filterCategoria.TextChanged += new System.EventHandler(this.filterCategoria_TextChanged);
+            this.filterCategoria.Click += new System.EventHandler(this.filterCategoria_Click);
+            // 
+            // filterNombre
+            // 
+            this.filterNombre.Location = new System.Drawing.Point(450, 52);
+            this.filterNombre.Name = "filterNombre";
+            this.filterNombre.Size = new System.Drawing.Size(114, 20);
+            this.filterNombre.TabIndex = 20;
+            this.filterNombre.TextChanged += new System.EventHandler(this.filterNombre_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Por Marca";
+            // 
+            // lblFilterCategoria
+            // 
+            this.lblFilterCategoria.AutoSize = true;
+            this.lblFilterCategoria.Location = new System.Drawing.Point(193, 55);
+            this.lblFilterCategoria.Name = "lblFilterCategoria";
+            this.lblFilterCategoria.Size = new System.Drawing.Size(71, 13);
+            this.lblFilterCategoria.TabIndex = 22;
+            this.lblFilterCategoria.Text = "Por Categoria";
+            // 
+            // lblfilterNombre
+            // 
+            this.lblfilterNombre.AutoSize = true;
+            this.lblfilterNombre.Location = new System.Drawing.Point(381, 55);
+            this.lblfilterNombre.Name = "lblfilterNombre";
+            this.lblfilterNombre.Size = new System.Drawing.Size(63, 13);
+            this.lblfilterNombre.TabIndex = 23;
+            this.lblfilterNombre.Text = "Por Nombre";
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(15, 16);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(86, 23);
+            this.btnReset.TabIndex = 24;
+            this.btnReset.Text = "Mostrar Todos";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.button1_Click);
+            // 
             // formArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(729, 353);
+            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.lblfilterNombre);
+            this.Controls.Add(this.lblFilterCategoria);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.filterNombre);
+            this.Controls.Add(this.filterCategoria);
+            this.Controls.Add(this.filterMarca);
             this.Controls.Add(this.pbArticulo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.lblListado);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnEditar);
@@ -169,16 +239,21 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvLista;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnCargar;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Label lblListado;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pbArticulo;
+        private System.Windows.Forms.ComboBox filterMarca;
+        private System.Windows.Forms.ComboBox filterCategoria;
+        private System.Windows.Forms.TextBox filterNombre;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblFilterCategoria;
+        private System.Windows.Forms.Label lblfilterNombre;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.DataGridView dgvLista;
     }
 }
 

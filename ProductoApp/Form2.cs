@@ -100,5 +100,6 @@ namespace ProductoApp
             if (e.KeyChar == '.' && (this.Text.IndexOf('.') > 0 || this.Text.Length == 0))
                 e.Handled = true;
         }
+
     }
 }
