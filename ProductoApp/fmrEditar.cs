@@ -1,15 +1,30 @@
 ﻿using Comercio;
 using Dominio;
 using System;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace ProductoApp
 {
+
     public partial class fmrEditar : Form
     {
-        public fmrEditar()
+        Articulo v;
+        public fmrEditar(Articulo art )
         {
             InitializeComponent();
+            v = art;
+            Articulo editadoC = v;
+            txtCodArticulo.Text = editadoC.CodArticulo;
+            txtNombre.Text = editadoC.Nombre;
+            txtDescripcion.Text = editadoC.Descripcion;
+            cbxMarca.Text = editadoC.Marca.Nombre;
+            //cbxMarca.SelectedIndex = editado.Marca.Id;
+
+            cbxCategoria.Text = editadoC.Categoria.Nombre;
+            //cbxCategoria.SelectedIndex = editado.Categoria.Id;
+            txtURLimagen.Text = editadoC.UrlImagen;
+            txtPrecio.Text = editadoC.Precio.ToString();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -20,7 +35,7 @@ namespace ProductoApp
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ArticuloComercio articulo = new ArticuloComercio();
-            Articulo editado = new Articulo();
+            Articulo editado = v;
             editado.Marca = new Marca();
             editado.Categoria = new Categoria();
 
@@ -28,12 +43,12 @@ namespace ProductoApp
             editado.Nombre = txtNombre.Text;
             editado.Descripcion = txtDescripcion.Text;
             editado.Marca.Nombre = cbxMarca.Text;
-            editado.Marca.Id = cbxMarca.SelectedIndex + 1;
+            editado.Marca.Id = cbxMarca.SelectedIndex;
 
-            editado.Categoria.Nombre = cbxCategoria.Text.ToString();
-            editado.Categoria.Id = cbxCategoria.SelectedIndex + 1;
+            editado.Categoria.Nombre = cbxCategoria.Text;
+            editado.Categoria.Id = cbxCategoria.SelectedIndex;
             editado.UrlImagen = txtURLimagen.Text;
-            editado.Precio = Decimal.Parse(txtPrecio.Text);
+            editado.Precio = Convert.ToDecimal(txtPrecio.Text);
 
             articulo.editar(editado);
 

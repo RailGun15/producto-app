@@ -87,7 +87,9 @@ namespace ProductoApp
 
         private void btnEditar_Click_1(object sender, EventArgs e)
         {
-            fmrEditar editar = new fmrEditar();
+            
+            Articulo art = (Articulo)dgvLista.CurrentRow.DataBoundItem;
+            fmrEditar editar = new fmrEditar(art);
             editar.ShowDialog();
             Cargar();
         }
