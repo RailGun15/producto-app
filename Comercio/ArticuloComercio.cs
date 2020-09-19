@@ -20,7 +20,7 @@ namespace Comercio
 
             connection.ConnectionString = "data source = .; initial catalog=CATALOGO_DB; integrated security=sspi";
             command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = "SELECT A.Id,A.Codigo,A.Nombre,ISNULL(A.Descripcion,''),ISNULL(M.Descripcion,'') AS Marca,ISNULL(C.Descripcion,'') AS Categoria,ISNULL(A.ImagenUrl,''),A.Precio FROM ARTICULOS A LEFT JOIN MARCAS M ON M.Id = A.IdMarca LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria;";
+            command.CommandText = "SELECT A.Id,A.Codigo,A.Nombre,ISNULL(A.Descripcion,''),M.id,ISNULL(M.Descripcion,'') AS Marca,C.id,ISNULL(C.Descripcion,'') AS Categoria,ISNULL(A.ImagenUrl,''),A.Precio FROM ARTICULOS A LEFT JOIN MARCAS M ON M.Id = A.IdMarca LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria;";
             command.Connection = connection;
 
             connection.Open();
@@ -32,14 +32,16 @@ namespace Comercio
                 aux.CodArticulo = reader.GetString(1);
                 aux.Nombre = reader.GetString(2);
                 aux.Descripcion = reader.GetString(3);
-                aux.UrlImagen = reader.GetString(6);
+                aux.UrlImagen = reader.GetString(8);
 
                 aux.Marca = new Marca();
-                aux.Marca.Nombre = reader.GetString(4);
+                aux.Marca.Nombre = reader.GetString(5);
+                aux.Marca.Id = (int)reader["id"];
                 aux.Categoria = new Categoria();
-                aux.Categoria.Nombre = reader.GetString(5);
-                aux.UrlImagen = reader.GetString(6);
-                aux.Precio = reader.GetDecimal(7);
+                aux.Categoria.Nombre = reader.GetString(7);
+                aux.Categoria.Id = (int)reader["id"];
+                aux.UrlImagen = reader.GetString(8);
+                aux.Precio = reader.GetDecimal(9);
 
                 artList.Add(aux);
 
@@ -59,7 +61,7 @@ namespace Comercio
 
             connection.ConnectionString = "data source = .; initial catalog=CATALOGO_DB; integrated security=sspi";
             command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = "update ARTICULOS set Codigo='@codigo',Nombre='@nombre',Descripcion=NULLIF('@descripcion',''),IdMarca=@marca,IdCategoria=@categoria,ImagenUrl=NULLIF('@imagen',''),Precio=@precio where id = @id;";
+            command.CommandText = "update ARTICULOS set Codigo=@codigo,Nombre=@nombre,Descripcion=NULLIF(@descripcion,''),IdMarca=@marca,IdCategoria=@categoria,ImagenUrl=NULLIF(@imagen,''),Precio=@precio where id = @id;";
             command.Parameters.AddWithValue("@id", editado.Id);
             command.Parameters.AddWithValue("@codigo", editado.CodArticulo);
             command.Parameters.AddWithValue("@nombre", editado.Nombre);

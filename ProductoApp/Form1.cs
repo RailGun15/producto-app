@@ -89,6 +89,7 @@ namespace ProductoApp
         {
             
             Articulo art = (Articulo)dgvLista.CurrentRow.DataBoundItem;
+
             fmrEditar editar = new fmrEditar(art);
             editar.ShowDialog();
             Cargar();

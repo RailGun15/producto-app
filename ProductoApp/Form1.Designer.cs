@@ -48,6 +48,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLista.Location = new System.Drawing.Point(26, 87);
+            this.dgvLista.MultiSelect = false;
             this.dgvLista.Name = "dgvLista";
             this.dgvLista.Size = new System.Drawing.Size(476, 173);
             this.dgvLista.TabIndex = 0;
