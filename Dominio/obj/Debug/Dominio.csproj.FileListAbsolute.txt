@@ -10,3 +10,9 @@ C:\Users\Asdmin\Documents\GitHub\producto-app\Dominio\obj\Debug\Dominio.csprojAs
 C:\Users\Asdmin\Documents\GitHub\producto-app\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\Asdmin\Documents\GitHub\producto-app\Dominio\obj\Debug\Dominio.dll
 C:\Users\Asdmin\Documents\GitHub\producto-app\Dominio\obj\Debug\Dominio.pdb
+C:\Users\Ignacio\source\repos\producto-app\Dominio\bin\Debug\Dominio.dll
+C:\Users\Ignacio\source\repos\producto-app\Dominio\bin\Debug\Dominio.pdb
+C:\Users\Ignacio\source\repos\producto-app\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\Ignacio\source\repos\producto-app\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\Ignacio\source\repos\producto-app\Dominio\obj\Debug\Dominio.dll
+C:\Users\Ignacio\source\repos\producto-app\Dominio\obj\Debug\Dominio.pdb

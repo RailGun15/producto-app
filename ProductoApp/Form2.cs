@@ -14,14 +14,19 @@ namespace ProductoApp
 {
     public partial class formCargar : Form
     {
-        public formCargar()
+        private readonly formArticulos _form1;
+        public formCargar(formArticulos form1)
         {
             InitializeComponent();
+            _form1 = form1;
         }
+
+
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
+            _form1.Cargar();
         }
 
         private void btnCargar_Click(object sender, EventArgs e)
@@ -72,6 +77,9 @@ namespace ProductoApp
 
             ArticuloComercio.Cargar(art);
 
+            MessageBox.Show("Articulo Cargado!");
+
+
         }
 
 
@@ -92,5 +100,6 @@ namespace ProductoApp
             if (e.KeyChar == '.' && (this.Text.IndexOf('.') > 0 || this.Text.Length == 0))
                 e.Handled = true;
         }
+
     }
 }
