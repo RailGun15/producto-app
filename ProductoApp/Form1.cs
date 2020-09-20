@@ -32,6 +32,8 @@ namespace ProductoApp
             ArticuloComercio comercio = new ArticuloComercio();
             listaOriginal = comercio.Listar();
             dgvLista.DataSource = listaOriginal;
+            dgvLista.Columns[0].Visible = false;
+            dgvLista.Columns[6].Visible = false;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
