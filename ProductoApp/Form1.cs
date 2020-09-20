@@ -89,7 +89,6 @@ namespace ProductoApp
             }
         }
 
-<<<<<<< HEAD
         private void filterMarca_Click(object sender, EventArgs e)
         {
             MarcaComercio mc = new MarcaComercio();
@@ -187,7 +186,6 @@ namespace ProductoApp
             return table;
         }
 
-=======
         private void btnEditar_Click_1(object sender, EventArgs e)
         {
             
@@ -197,7 +195,6 @@ namespace ProductoApp
             editar.ShowDialog();
             Cargar();
         }
->>>>>>> ef1b124bf53f7edb6064ac71483370f21f4cb02c
     }
 
 
