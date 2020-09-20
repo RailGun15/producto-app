@@ -19,7 +19,7 @@ namespace Comercio
             SqlDataReader reader;
             List<Articulo> artList = new List<Articulo>();
 
-            connection.ConnectionString = "data source = .; initial catalog=CATALOGO_DB; integrated security=sspi";
+            connection.ConnectionString = "data source = localhost\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = "SELECT A.Id,A.Codigo,A.Nombre,ISNULL(A.Descripcion,''),M.id,ISNULL(M.Descripcion,'') AS Marca,C.id,ISNULL(C.Descripcion,'') AS Categoria,ISNULL(A.ImagenUrl,''),A.Precio FROM ARTICULOS A LEFT JOIN MARCAS M ON M.Id = A.IdMarca LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria;";
             command.Connection = connection;
@@ -59,7 +59,7 @@ namespace Comercio
             SqlConnection connection = new SqlConnection();
             SqlCommand command = new SqlCommand();
 
-            connection.ConnectionString = "data source = .; initial catalog=CATALOGO_DB; integrated security=sspi";
+            connection.ConnectionString = "data source = localhost\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = "update ARTICULOS set Codigo=@codigo,Nombre=@nombre,Descripcion=NULLIF(@descripcion,''),IdMarca=@marca,IdCategoria=@categoria,ImagenUrl=NULLIF(@imagen,''),Precio=@precio where id = @id;";
             command.Parameters.AddWithValue("@id", editado.Id);
@@ -83,7 +83,7 @@ namespace Comercio
             SqlConnection connection = new SqlConnection();
             SqlCommand command = new SqlCommand();
 
-            connection.ConnectionString = "data source = .\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
+            connection.ConnectionString = "data source = localhost\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = "DELETE FROM ARTICULOS WHERE Id = @Id;";
             command.Parameters.AddWithValue("@Id", id);
@@ -101,7 +101,7 @@ namespace Comercio
             SqlConnection connection = new SqlConnection();
             SqlCommand command = new SqlCommand();
 
-            connection.ConnectionString = "data source = .; initial catalog=CATALOGO_DB; integrated security=sspi";
+            connection.ConnectionString = "data source = localhost\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = "INSERT INTO ARTICULOS (Codigo,Nombre,Descripcion,IdMarca,IdCategoria,ImagenUrl,Precio) VALUES (@codigo,@nombre,NULLIF(@descripcion,''),@marca,@categoria,NULLIF(@imagen,''),@precio);";
             command.Parameters.AddWithValue("@codigo", art.CodArticulo);
@@ -119,7 +119,6 @@ namespace Comercio
             connection.Close();
         }
 
-<<<<<<< HEAD
         public List<Articulo> BuscarMarca(Marca m)
         {
             SqlConnection connection = new SqlConnection();
@@ -127,7 +126,7 @@ namespace Comercio
             SqlDataReader reader;
             List<Articulo> artList = new List<Articulo>();
 
-            connection.ConnectionString = "data source = .\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
+            connection.ConnectionString = "data source = localhost\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = "SELECT A.Id,A.Codigo,A.Nombre,ISNULL(A.Descripcion,''),ISNULL(M.Descripcion,'') AS Marca,ISNULL(C.Descripcion,'') AS Categoria,ISNULL(A.ImagenUrl,''),A.Precio FROM ARTICULOS A LEFT JOIN MARCAS M ON M.Id = A.IdMarca LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria WHERE IdMarca = @marca;";
             command.Parameters.AddWithValue("@marca", m.Id);
@@ -167,7 +166,7 @@ namespace Comercio
             SqlDataReader reader;
             List<Articulo> artList = new List<Articulo>();
 
-            connection.ConnectionString = "data source = .\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
+            connection.ConnectionString = "data source = localhost\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = "SELECT A.Id,A.Codigo,A.Nombre,ISNULL(A.Descripcion,''),ISNULL(M.Descripcion,'') AS Marca,ISNULL(C.Descripcion,'') AS Categoria,ISNULL(A.ImagenUrl,''),A.Precio FROM ARTICULOS A LEFT JOIN MARCAS M ON M.Id = A.IdMarca LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria WHERE IdCategoria = @categoria;";
             command.Parameters.AddWithValue("@categoria", c.Id);
@@ -208,7 +207,7 @@ namespace Comercio
             SqlDataReader reader;
             List<Articulo> artList = new List<Articulo>();
 
-            connection.ConnectionString = "data source = .\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
+            connection.ConnectionString = "data source = localhost\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = "SELECT A.Id,A.Codigo,A.Nombre,ISNULL(A.Descripcion,''),ISNULL(M.Descripcion,'') AS Marca,ISNULL(C.Descripcion,'') AS Categoria,ISNULL(A.ImagenUrl,''),A.Precio FROM ARTICULOS A LEFT JOIN MARCAS M ON M.Id = A.IdMarca LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria WHERE IdMarca = @marca AND IdCategoria = @categoria;";
             command.Parameters.AddWithValue("@marca", m.Id);
@@ -242,12 +241,5 @@ namespace Comercio
             return artList;
         }
 
-        public static void Editar(Articulo art)
-        {
-
-        }
-=======
-       
->>>>>>> ef1b124bf53f7edb6064ac71483370f21f4cb02c
     }
 }

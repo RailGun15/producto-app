@@ -9,22 +9,11 @@ namespace ProductoApp
 
     public partial class fmrEditar : Form
     {
-        private Articulo v=null;
-        public fmrEditar(Articulo art )
+        private Articulo v = null;
+        public fmrEditar(Articulo art)
         {
             InitializeComponent();
             v = art;
-            Articulo editadoC = v;
-            //txtCodArticulo.Text = editadoC.CodArticulo;
-            //txtNombre.Text = editadoC.Nombre;
-            //txtDescripcion.Text = editadoC.Descripcion;
-            //cbxMarca.Text = editadoC.Marca.Nombre;
-            ////cbxMarca.SelectedIndex = editado.Marca.Id;
-
-            //cbxCategoria.Text = editadoC.Categoria.Nombre;
-            ////cbxCategoria.SelectedIndex = editado.Categoria.Id;
-            //txtURLimagen.Text = editadoC.UrlImagen;
-            //txtPrecio.Text = editadoC.Precio.ToString();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -61,7 +50,6 @@ namespace ProductoApp
         {
             CategoriaComercio categoriaComercio = new CategoriaComercio();
             MarcaComercio maracacomercio = new MarcaComercio();
-
 
             cbxCategoria.DataSource = categoriaComercio.Listar();
             cbxCategoria.ValueMember = "Id";

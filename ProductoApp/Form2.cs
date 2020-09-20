@@ -101,12 +101,11 @@ namespace ProductoApp
                 e.Handled = true;
         }
 
-<<<<<<< HEAD
-=======
+
         private void formCargar_Load(object sender, EventArgs e)
         {
 
         }
->>>>>>> ef1b124bf53f7edb6064ac71483370f21f4cb02c
+
     }
 }
