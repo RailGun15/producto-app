@@ -19,9 +19,9 @@ namespace Comercio
             SqlDataReader reader;
             List<Articulo> artList = new List<Articulo>();
 
-            connection.ConnectionString = "data source = .\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
+            connection.ConnectionString = "data source = .; initial catalog=CATALOGO_DB; integrated security=sspi";
             command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = "SELECT A.Id,A.Codigo,A.Nombre,ISNULL(A.Descripcion,''),ISNULL(M.Descripcion,'') AS Marca,ISNULL(C.Descripcion,'') AS Categoria,ISNULL(A.ImagenUrl,''),A.Precio FROM ARTICULOS A LEFT JOIN MARCAS M ON M.Id = A.IdMarca LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria;";
+            command.CommandText = "SELECT A.Id,A.Codigo,A.Nombre,ISNULL(A.Descripcion,''),M.id,ISNULL(M.Descripcion,'') AS Marca,C.id,ISNULL(C.Descripcion,'') AS Categoria,ISNULL(A.ImagenUrl,''),A.Precio FROM ARTICULOS A LEFT JOIN MARCAS M ON M.Id = A.IdMarca LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria;";
             command.Connection = connection;
 
             connection.Open();
@@ -33,14 +33,16 @@ namespace Comercio
                 aux.CodArticulo = reader.GetString(1);
                 aux.Nombre = reader.GetString(2);
                 aux.Descripcion = reader.GetString(3);
-                aux.UrlImagen = reader.GetString(6);
+                aux.UrlImagen = reader.GetString(8);
 
                 aux.Marca = new Marca();
-                aux.Marca.Nombre = reader.GetString(4);
+                aux.Marca.Nombre = reader.GetString(5);
+                aux.Marca.Id = (int)reader["id"];
                 aux.Categoria = new Categoria();
-                aux.Categoria.Nombre = reader.GetString(5);
-                aux.UrlImagen = reader.GetString(6);
-                aux.Precio = reader.GetDecimal(7);
+                aux.Categoria.Nombre = reader.GetString(7);
+                aux.Categoria.Id = (int)reader["id"];
+                aux.UrlImagen = reader.GetString(8);
+                aux.Precio = reader.GetDecimal(9);
 
                 artList.Add(aux);
             }
@@ -50,6 +52,30 @@ namespace Comercio
             return artList;
 
 
+        }
+
+        public void editar(Articulo editado)
+        {
+            SqlConnection connection = new SqlConnection();
+            SqlCommand command = new SqlCommand();
+
+            connection.ConnectionString = "data source = .; initial catalog=CATALOGO_DB; integrated security=sspi";
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = "update ARTICULOS set Codigo=@codigo,Nombre=@nombre,Descripcion=NULLIF(@descripcion,''),IdMarca=@marca,IdCategoria=@categoria,ImagenUrl=NULLIF(@imagen,''),Precio=@precio where id = @id;";
+            command.Parameters.AddWithValue("@id", editado.Id);
+            command.Parameters.AddWithValue("@codigo", editado.CodArticulo);
+            command.Parameters.AddWithValue("@nombre", editado.Nombre);
+            command.Parameters.AddWithValue("@descripcion", editado.Descripcion);
+            command.Parameters.AddWithValue("@marca", editado.Marca.Id);
+            command.Parameters.AddWithValue("@categoria", editado.Categoria.Id);
+            command.Parameters.AddWithValue("@imagen", editado.UrlImagen);
+            command.Parameters.AddWithValue("@precio", editado.Precio);
+            command.Connection = connection;
+
+            connection.Open();
+            command.ExecuteNonQuery();
+
+            connection.Close();
         }
 
         public void Eliminar(int id)
@@ -75,7 +101,7 @@ namespace Comercio
             SqlConnection connection = new SqlConnection();
             SqlCommand command = new SqlCommand();
 
-            connection.ConnectionString = "data source = .\\SQLEXPRESS; initial catalog=CATALOGO_DB; integrated security=sspi";
+            connection.ConnectionString = "data source = .; initial catalog=CATALOGO_DB; integrated security=sspi";
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = "INSERT INTO ARTICULOS (Codigo,Nombre,Descripcion,IdMarca,IdCategoria,ImagenUrl,Precio) VALUES (@codigo,@nombre,NULLIF(@descripcion,''),@marca,@categoria,NULLIF(@imagen,''),@precio);";
             command.Parameters.AddWithValue("@codigo", art.CodArticulo);
@@ -93,6 +119,7 @@ namespace Comercio
             connection.Close();
         }
 
+<<<<<<< HEAD
         public List<Articulo> BuscarMarca(Marca m)
         {
             SqlConnection connection = new SqlConnection();
@@ -219,5 +246,8 @@ namespace Comercio
         {
 
         }
+=======
+       
+>>>>>>> ef1b124bf53f7edb6064ac71483370f21f4cb02c
     }
 }
