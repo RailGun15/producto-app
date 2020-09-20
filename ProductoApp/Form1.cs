@@ -15,6 +15,7 @@ namespace ProductoApp
     public partial class formArticulos : Form
     {
         public static bool showed = false;
+        private List<Articulo> listaOriginal;
 
         public formArticulos()
         {
@@ -29,7 +30,8 @@ namespace ProductoApp
         public void Cargar()
         {
             ArticuloComercio comercio = new ArticuloComercio();
-            dgvLista.DataSource = comercio.Listar();
+            listaOriginal = comercio.Listar();
+            dgvLista.DataSource = listaOriginal;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -48,7 +50,8 @@ namespace ProductoApp
             try
             {
                 Articulo art = (Articulo)dgvLista.CurrentRow.DataBoundItem;
-                pbArticulo.Load(art.UrlImagen);
+                pbArticulo.ImageLocation = art.UrlImagen;
+                pbArticulo.Load();
             }
             catch (Exception)
             {
@@ -73,7 +76,7 @@ namespace ProductoApp
                                      MessageBoxButtons.YesNo);
                 if (confirmar == DialogResult.Yes)
                 {
-                    c.Eliminar(art.Id);
+                    c.Eliminar((int)art.Id);
                     Cargar();
                 }
             }
@@ -102,7 +105,14 @@ namespace ProductoApp
             {
                 Cargar();
                 DataTable dt = ToDataTable<Articulo>((List<Articulo>)dgvLista.DataSource);
-                dt.DefaultView.RowFilter = string.Format("Nombre like '%{0}%'", filterNombre.Text.Trim().Replace("'", "''"));
+                if (int.TryParse(filterNombre.Text, out int n)) // si todo el string es numerico devuelve true y lo carga en la variable n
+                {
+                    dt.DefaultView.RowFilter = string.Format("Precio >= {0}", n);
+                }
+                else // si es texto busca por otras columnas
+                {
+                    dt.DefaultView.RowFilter = string.Format("Nombre like '%{0}%' OR Descripcion like '%{0}%' OR CodArticulo like '%{0}%'", filterNombre.Text.Trim().Replace("'", "''"));
+                }
                 dgvLista.DataSource = dt;
                 dgvLista.Refresh();
             }
@@ -120,7 +130,6 @@ namespace ProductoApp
                 ArticuloComercio mc = new ArticuloComercio();
                 Marca m = (Marca)filterMarca.SelectedItem;
                 dgvLista.DataSource = mc.BuscarMarca(m);
-                dgvLista.Refresh();
             }
             else
             {
@@ -128,7 +137,6 @@ namespace ProductoApp
                 Marca m = (Marca)filterMarca.SelectedItem;
                 Categoria c = (Categoria)filterCategoria.SelectedItem;
                 dgvLista.DataSource = mc.BuscarMarcaCategoria(m,c);
-                dgvLista.Refresh();
             }
         }
 
@@ -158,7 +166,8 @@ namespace ProductoApp
             filterNombre.Text = "";
             Cargar();
         }
-
+        
+        //funcion generica para convertir una lista en un datatable
         public static DataTable ToDataTable<T>(IList<T> data)
         {
             PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(T));

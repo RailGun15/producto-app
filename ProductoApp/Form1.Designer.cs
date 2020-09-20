@@ -76,6 +76,7 @@
             this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnEditar.Location = new System.Drawing.Point(26, 266);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 23);
@@ -88,6 +89,7 @@
             this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnEliminar.Location = new System.Drawing.Point(124, 266);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
@@ -101,6 +103,7 @@
             this.btnCargar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCargar.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnCargar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargar.Location = new System.Drawing.Point(322, 266);
             this.btnCargar.Name = "btnCargar";
@@ -115,6 +118,7 @@
             this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Location = new System.Drawing.Point(26, 305);
             this.btnSalir.Name = "btnSalir";
@@ -165,7 +169,7 @@
             // 
             this.filterNombre.Location = new System.Drawing.Point(450, 52);
             this.filterNombre.Name = "filterNombre";
-            this.filterNombre.Size = new System.Drawing.Size(114, 20);
+            this.filterNombre.Size = new System.Drawing.Size(187, 20);
             this.filterNombre.TabIndex = 20;
             this.filterNombre.TextChanged += new System.EventHandler(this.filterNombre_TextChanged);
             // 
@@ -190,14 +194,15 @@
             // lblfilterNombre
             // 
             this.lblfilterNombre.AutoSize = true;
-            this.lblfilterNombre.Location = new System.Drawing.Point(381, 55);
+            this.lblfilterNombre.Location = new System.Drawing.Point(393, 55);
             this.lblfilterNombre.Name = "lblfilterNombre";
-            this.lblfilterNombre.Size = new System.Drawing.Size(63, 13);
+            this.lblfilterNombre.Size = new System.Drawing.Size(40, 13);
             this.lblfilterNombre.TabIndex = 23;
-            this.lblfilterNombre.Text = "Por Nombre";
+            this.lblfilterNombre.Text = "Buscar";
             // 
             // btnReset
             // 
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnReset.Location = new System.Drawing.Point(15, 16);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(86, 23);
@@ -210,6 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(729, 353);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lblfilterNombre);
